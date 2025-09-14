@@ -101,7 +101,7 @@
         /* Header section */
         .header {
             text-align: center;
-            padding: clamp(40px, 10vh, 100px) 0 clamp(30px, 8vh, 80px);
+            padding: clamp(40px, 8vh, 80px) 0 clamp(5px, 2.5vh, 15px);
             position: relative;
         }
 
@@ -152,6 +152,58 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* Hero section with poster */
+        .hero-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(6px, 1.5vh, 12px) 0 clamp(30px, 6vh, 60px);
+            position: relative;
+        }
+
+        .poster-container {
+            position: relative;
+            max-width: min(600px, 90vw);
+            border-radius: clamp(15px, 3vw, 25px);
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 212, 255, 0.2);
+            transition: all 0.4s ease;
+            border: 1px solid var(--border-dark);
+        }
+
+        .poster-container:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 35px 80px rgba(0, 212, 255, 0.3);
+        }
+
+        .poster-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 107, 107, 0.1) 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .poster-container:hover::before {
+            opacity: 1;
+        }
+
+        .poster-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .poster-container:hover .poster-image {
+            transform: scale(1.05);
         }
 
         /* Workshop info card */
@@ -329,6 +381,7 @@
             left: clamp(10px, 3vw, 25px);
             font-family: serif;
             z-index: 1;
+            line-height: 1;
         }
 
         .feedback-card:hover {
@@ -618,10 +671,12 @@
 </head>
 <body>
     <div class="animated-bg">
-        <div class="floating-orbs">
-            <div class="orb"></div>
-            <div class="orb"></div>
-            <div class="orb"></div>
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
         </div>
     </div>
 
@@ -630,6 +685,12 @@
             <h1>Workshop Success Story</h1>
             <p>See what our participants achieved in few hours</p>
         </header>
+
+        <section class="hero-section">
+            <div class="poster-container">
+                <img src="banner.jpg" alt="Git & GitHub Fundamentals Workshop Poster" class="poster-image">
+            </div>
+        </section>
 
         <div class="workshop-info">
             <h2><span class="emoji">🔥</span>Git & GitHub — Hands-on Workshop</h2>
@@ -859,5 +920,3 @@
     </script>
 </body>
 </html>
-
-
